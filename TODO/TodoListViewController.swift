@@ -23,6 +23,15 @@ class TodoListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemArray.count
     }
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //用户单击单元格以后会呈现勾选标记
+        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        }else {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        }
+        //用户单击单元格以后灰色高度会逐步变淡消失
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
